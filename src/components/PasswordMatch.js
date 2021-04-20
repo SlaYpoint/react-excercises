@@ -2,12 +2,23 @@ import React, { useState } from "react";
 
 const PasswordMatch = () => {
   let [pswd, setPswd] = useState("");
-  let [match, showMatch] = useState(" ");
+  let [msg, showMsg] = useState(" ");
+
+  const checkAlphaNum = (pass) => {
+    let digit = /\d/;
+    if (!pass.match(digit) && pass.length !== 0) {
+      showMsg("Password must be alpha-numeric!");
+      setPswd("");
+    } else {
+      showMsg("");
+      setPswd(pass);
+    }
+  };
 
   return (
     <div>
       <h2>Password Matching</h2>
-      <input type="password" onChange={(e) => setPswd(e.target.value)} />
+      <input type="password" onChange={(e) => checkAlphaNum(e.target.value)} />
       <br />
       <br />
       <input
@@ -15,16 +26,16 @@ const PasswordMatch = () => {
         onChange={(e) => {
           let confirm = e.target.value;
 
-          if (pswd === confirm) {
-            showMatch("Password Matched");
+          if (pswd === confirm && pswd.length !== 0) {
+            showMsg("Password Matched");
           } else {
-            showMatch("Password Unmatched!");
+            showMsg("Password Unmatched!");
           }
         }}
       />
       <br />
       <br />
-      <p>{match}</p>
+      <p>{msg}</p>
     </div>
   );
 };
