@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const PasswordMatch = () => {
   let [pswd, setPswd] = useState("");
   let [msg, showMsg] = useState(" ");
+  let [btnDisable, setDisable] = useState(true);
 
   const checkAlphaNum = (pass) => {
     let digit = /\d/;
@@ -28,6 +29,7 @@ const PasswordMatch = () => {
 
           if (pswd === confirm && pswd.length !== 0) {
             showMsg("Password Matched");
+            setDisable(false);
           } else {
             showMsg("Password Unmatched!");
           }
@@ -36,6 +38,9 @@ const PasswordMatch = () => {
       <br />
       <br />
       <p>{msg}</p>
+      <button disabled={btnDisable} onClick={console.log(pswd)}>
+        Submit
+      </button>
     </div>
   );
 };
