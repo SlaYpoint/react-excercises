@@ -1,0 +1,13 @@
+.toast {
+	background: var(--primary);
+	color: white;
+	margin: 2rem;
+	padding: 0.5rem;
+	font-size: 1.5rem;
+}
+
+.close {
+	font-weight: 600;
+	float: right;
+	cursor: pointer;
+}

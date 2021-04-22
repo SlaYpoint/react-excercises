@@ -5,6 +5,8 @@ import CharCounter from './components/CharCounter';
 import PasswordMatch from './components/PasswordMatch';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import SwitchTabs from './components/SwitchTabs';
+import Toast from './components/Toast/Toast';
+
 export default function App() {
 	return (
 		<div className="App">
@@ -12,7 +14,8 @@ export default function App() {
 			{/* <CharCounter /> */}
 			{/* <PasswordMatch /> */}
 			{/* <ShoppingCart /> */}
-			<SwitchTabs />
+			{/* <SwitchTabs /> */}
+			<Toast />
 		</div>
 	);
 }
