@@ -1,0 +1,9 @@
+.dark {
+	--secondary: #243133;
+	--font: #ffffff;
+}
+
+.container {
+	background: var(--secondary);
+	color: var(--font);
+}

@@ -6,6 +6,7 @@ import PasswordMatch from './components/PasswordMatch';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import SwitchTabs from './components/SwitchTabs';
 import Toast from './components/Toast/Toast';
+import DarkMode from './components/DarkMode/DarkMode';
 
 export default function App() {
 	return (
@@ -15,7 +16,8 @@ export default function App() {
 			{/* <PasswordMatch /> */}
 			{/* <ShoppingCart /> */}
 			{/* <SwitchTabs /> */}
-			<Toast />
+			{/* <Toast /> */}
+			<DarkMode />
 		</div>
 	);
 }
