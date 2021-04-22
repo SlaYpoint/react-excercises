@@ -1,59 +1,92 @@
 import React, { useState } from 'react';
 
-const Cart = ({ item, cart }) => {
+const List = ({ items, addToCart }) => {
 	return (
-		<div>
-			<li>{item}</li>
-			<button>-</button>
-			<li>{cart[item]}</li>
-			<button>+</button>
-		</div>
+		<ul style={{ paddingInlineStart: 0 }}>
+			{items.map((item) => (
+				<div>
+					<li>
+						{item.prod}
+						<button onClick={() => addToCart(item)}> Add to Cart </button>
+					</li>
+				</div>
+			))}
+		</ul>
 	);
 };
 
-const List = ({ items, addToCart }) => {
+const Cart = ({ cart, addToCart, removeFromCart }) => {
 	return (
 		<ul>
-			{items.map((item) => {
+			{cart.map((item) => (
 				<div>
-					<li> {item.prod} </li>
-					<li> {item.qty} </li>
-					<button onClick={() => addToCart(item.prod)}>Add to cart</button>
-				</div>;
-			})}
+					<li>
+						{item.prod}
+						<button onClick={() => removeFromCart(item)}> - </button>
+						{item.qty}
+						<button onClick={() => addToCart(item)}> + </button>
+					</li>
+				</div>
+			))}
 		</ul>
 	);
 };
 
 const ShoppingCart = () => {
-	const [cart, setCart] = useState({});
+	const [cart, setCart] = useState([]);
 	const items = [
-		{ prod: 'Blue Pen', qty: 15 },
-		{ prod: 'Classmate Notebook', qty: 20 },
-		{ prod: 'Eraser', qty: 10 }
+		{
+			id: 1,
+			prod: 'Classmate Notebook',
+			qty: 0
+		},
+		{
+			id: 2,
+			prod: 'Apsara Pencil',
+			qty: 0
+		},
+		{
+			id: 3,
+			prod: 'Roroito Blue Pen',
+			qty: 0
+		}
 	];
 
 	const addToCart = (item) => {
-		let currCart = { ...cart };
-		if (!cart[item]) {
-			currCart[item] = 1;
+		const idx = cart.findIndex((i) => item.id === i.id);
+		if (idx >= 0) {
+			let currCart = [...cart];
+			currCart[idx].qty++;
+			setCart(currCart);
 		} else {
-			currCart[item]++;
+			setCart([...cart, { ...item, qty: 1 }]);
 		}
-		setCart(currCart);
 	};
 
+	const removeFromCart = (item) => {
+		const idx = cart.findIndex((i) => item.id === i.id);
+		if (idx >= 0) {
+			let currCart = [...cart];
+			if (currCart[idx].qty > 1) {
+				currCart[idx].qty--;
+				setCart(currCart);
+			} else {
+				currCart = currCart.filter((i) => i !== currCart[idx]);
+				setCart(currCart);
+			}
+		}
+	};
 	return (
 		<div>
-			<h1>shopMe</h1>
+			<h1>Shopping Cart</h1>
 			<List items={items} addToCart={addToCart} />
 			<div>
-				<h2>My Cart</h2>
-				<ul>
-					{Object.keys(cart).map((item) => (
-						<Cart item={item} cart={cart} />
-					))}
-				</ul>
+				<h2>Cart</h2>
+				<Cart
+					cart={cart}
+					addToCart={addToCart}
+					removeFromCart={removeFromCart}
+				/>
 			</div>
 		</div>
 	);
