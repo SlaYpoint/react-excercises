@@ -1,4 +1,63 @@
+:root {
+	--bg-color: #fce7f3;
+	--primary: #db2777;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: var(--bg-color);
+}
+
 .App {
-  font-family: sans-serif;
-  text-align: center;
+	font-family: sans-serif;
+	text-align: center;
+}
+
+ul {
+	list-style: none;
+	padding-inline-start: 0;
+}
+
+h1 {
+	background: var(--primary);
+	color: white;
+	padding: 1rem;
+	max-width: 30rem;
+	margin: 1.5rem auto;
+	border-top-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+}
+
+h2 {
+	background: var(--primary);
+	color: white;
+	padding: 1rem;
+	max-width: 25rem;
+	margin: auto;
+	border-top-left-radius: 1rem;
+	border-top-right-radius: 1rem;
+}
+
+.btn {
+	background: var(--primary);
+	color: white;
+	padding: 0.5rem 1rem;
+	border: 1px solid var(--primary);
+	margin: 1rem;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.container {
+	background: white;
+	max-width: 30rem;
+	margin: 1.5rem auto;
+	padding-bottom: 1rem;
+	border-radius: 10px;
 }

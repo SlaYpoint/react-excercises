@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import './cart.css';
 
 const List = ({ items, addToCart }) => {
 	return (
 		<ul style={{ paddingInlineStart: 0 }}>
 			{items.map((item) => (
-				<div>
-					<li>
+				<div className="flex">
+					<li className="shop-items">
 						{item.prod}
-						<button onClick={() => addToCart(item)}> Add to Cart </button>
+						<button className="btn" onClick={() => addToCart(item)}>
+							{' '}
+							Add to Cart{' '}
+						</button>
 					</li>
 				</div>
 			))}
@@ -19,12 +23,18 @@ const Cart = ({ cart, addToCart, removeFromCart }) => {
 	return (
 		<ul>
 			{cart.map((item) => (
-				<div>
-					<li>
+				<div className="flex">
+					<li className="cart-items">
 						{item.prod}
-						<button onClick={() => removeFromCart(item)}> - </button>
+						<button className="btn" onClick={() => removeFromCart(item)}>
+							{' '}
+							-{' '}
+						</button>
 						{item.qty}
-						<button onClick={() => addToCart(item)}> + </button>
+						<button className="btn" onClick={() => addToCart(item)}>
+							{' '}
+							+{' '}
+						</button>
 					</li>
 				</div>
 			))}
@@ -77,10 +87,11 @@ const ShoppingCart = () => {
 		}
 	};
 	return (
-		<div>
+		<div className="container">
 			<h1>Shopping Cart</h1>
 			<List items={items} addToCart={addToCart} />
-			<div>
+			<hr/>
+			<div className="cart-holder">
 				<h2>Cart</h2>
 				<Cart
 					cart={cart}
