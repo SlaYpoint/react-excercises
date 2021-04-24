@@ -7,6 +7,7 @@ import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import SwitchTabs from './components/SwitchTabs';
 import Toast from './components/Toast/Toast';
 import DarkMode from './components/DarkMode';
+import ToDo from './components/ToDo/ToDo';
 
 export default function App() {
 	return (
@@ -17,7 +18,8 @@ export default function App() {
 			{/* <ShoppingCart /> */}
 			{/* <SwitchTabs /> */}
 			{/* <Toast /> */}
-			<DarkMode />
+			{/* <DarkMode /> */}
+			<ToDo />
 		</div>
 	);
 }
