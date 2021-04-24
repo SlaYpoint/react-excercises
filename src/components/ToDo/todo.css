@@ -1,0 +1,25 @@
+.list {
+	width: 80%;
+	margin: auto;
+	padding: 1rem;
+	border-radius: 10px;
+	box-shadow: 1px 1px 2.5px 0.5px gray;
+}
+
+.task {
+	cursor: pointer;
+	margin: 0.5rem;
+	padding: 0.5rem 1rem;
+	background: white;
+	border: 1px solid var(--primary);
+	border-radius: 10px;
+	font-size: 1rem;
+}
+
+.todo {
+	margin: 0 0.2rem;
+	padding: 0 0.2rem;
+	list-style: none;
+	padding-inline-start: 0;
+	text-align: center;
+}

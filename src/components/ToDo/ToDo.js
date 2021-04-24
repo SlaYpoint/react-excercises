@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './todo.css';
 
 const ToDo = () => {
 	const [task, setTask] = useState('');
@@ -24,7 +25,12 @@ const ToDo = () => {
 	return (
 		<div className="container">
 			<h1>toDo</h1>
-			<input placeholder="Enter your task" value={task} onChange={addTask} />
+			<input
+				style={{ textAlign: 'center' }}
+				placeholder="Enter your task"
+				value={task}
+				onChange={addTask}
+			/>
 			<button className="btn" onClick={addToList}>
 				{' '}
 				+{' '}
@@ -33,16 +39,21 @@ const ToDo = () => {
 			<div>
 				{toDo.map((task) => {
 					return (
-						<li>
+						<li className="todo">
 							<span
+								className="task"
 								style={{
 									textDecoration: task.completed ? 'line-through' : 'none'
 								}}
 							>
 								{task.name}
 							</span>
-							<button onClick={() => taskDone(task)}>✅</button>
-							<button onClick={() => removeTask(task)}>❌</button>
+							<button className="task" onClick={() => taskDone(task)}>
+								✅
+							</button>
+							<button className="task" onClick={() => removeTask(task)}>
+								❌
+							</button>
 						</li>
 					);
 				})}
